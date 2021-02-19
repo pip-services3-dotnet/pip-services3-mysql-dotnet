@@ -1,19 +1,21 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using PipServices3.Commons.Convert;
 using PipServices3.Commons.Data;
 
 namespace PipServices3.MySql.Persistence
 {
-    public class MySqlDummyPersistence : IdentifiableMySqlPersistence<Dummy, string>, IDummyPersistence
+	public class MySqlDummyPersistence : IdentifiableMySqlPersistence<Dummy, string>, IDummyPersistence
     {
         public MySqlDummyPersistence()
             : base("dummies")
         {
-            AutoCreateObject("CREATE TABLE `dummies` (`id` VARCHAR(32) PRIMARY KEY, `key` VARCHAR(50), `content` TEXT, `create_time_utc` DATETIME, `sub_dummy` TEXT)"); 
-            EnsureIndex("dummies_key", new Dictionary<string, bool> { { "key", true } }, new IndexOptions { Unique = true });
+        }
+
+        protected override void DefineSchema()
+        {
+            ClearSchema();
+            EnsureSchema($"CREATE TABLE `{_tableName}` (`id` VARCHAR(32) PRIMARY KEY, `key` VARCHAR(50), `content` TEXT, `create_time_utc` DATETIME, `sub_dummy` TEXT)");
+            EnsureIndex($"{_tableName}_key", new Dictionary<string, bool> { { "key", true } }, new IndexOptions { Unique = true });
         }
 
         public async Task<DataPage<Dummy>> GetPageByFilterAsync(string correlationId, FilterParams filter, PagingParams paging)
