@@ -6,9 +6,9 @@
     <RootNamespace>PipServices3.MySql</RootNamespace>
     <ApplicationIcon />
     <Win32Resource />
-    <Version>3.1.0</Version>
-    <Authors>Sergey Seroukhov, Denis Kuznetsov</Authors>
-    <Copyright>Conceptual Vision Consulting LLC. 2017-2020</Copyright>
+    <Version>3.1.1</Version>
+    <Authors>Sergey Seroukhov, Denis Kuznetsov, Sergey Khoroshikh</Authors>
+    <Copyright>Conceptual Vision Consulting LLC. 2017-2021</Copyright>
     <Description>MySql components for Pip.Services in .NET</Description>
     <Company>Conceptual Vision Consulting LLC.</Company>
     <Product>PipServices3.MySql</Product>
