@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using PipServices3.Commons.Config;
 using PipServices3.Commons.Errors;
@@ -6,8 +7,7 @@ using PipServices3.Commons.Refer;
 using PipServices3.Commons.Run;
 using PipServices3.Components.Log;
 using PipServices3.MySql.Connect;
-using System.Linq;
-using System.Data.SqlClient;
+using Renci.SshNet;
 using MySqlData = MySql.Data;
 
 namespace PipServices3.MySql.Persistence
@@ -45,8 +45,10 @@ namespace PipServices3.MySql.Persistence
     /// - *:discovery:*:*:1.0        (optional) <a href="https://pip-services3-dotnet.github.io/pip-services3-components-dotnet/interface_pip_services_1_1_components_1_1_connect_1_1_i_discovery.html">IDiscovery</a> services
     /// - *:credential-store:*:*:1.0 (optional) Credential stores to resolve credentials
     /// </summary>
-    public class MySqlConnection : IReferenceable, IReconfigurable, IOpenable
+    public sealed class MySqlConnection : IReferenceable, IReconfigurable, IOpenable
     {
+	    private ConfigParams _config;
+		    
         private ConfigParams _defaultConfig = ConfigParams.FromTuples(
             "options.connect_timeout", 15,
             "options.idle_timeout", 10000,
@@ -56,33 +58,42 @@ namespace PipServices3.MySql.Persistence
         /// <summary>
         /// The connection resolver.
         /// </summary>
-        protected MySqlConnectionResolver _connectionResolver = new MySqlConnectionResolver();
+        private MySqlConnectionResolver _connectionResolver = new MySqlConnectionResolver();
 
         /// <summary>
         /// The configuration options.
         /// </summary>
-        protected ConfigParams _options = new ConfigParams();
+        private ConfigParams _options = new ConfigParams();
+
+        /// <summary>
+        /// The SSH configuration object.
+        /// </summary>
+        private ConfigParams _sshConfigs = new ConfigParams();
 
         /// <summary>
         /// The MySql connection object.
         /// </summary>
-        protected MySqlData.MySqlClient.MySqlConnection _connection;
+        private MySqlData.MySqlClient.MySqlConnection _connection;
 
         /// <summary>
         /// The database name.
         /// </summary>
-        protected string _databaseName;
+        private string _databaseName;
+
+        /// <summary>
+        /// The database name.
+        /// </summary>
+        private string _databaseServer;
+        
+        /// <summary>
+        /// The flag enabled ssh.
+        /// </summary>
+        private bool _sshEnabled;
 
         /// <summary>
         /// The logger.
         /// </summary>
-        protected CompositeLogger _logger = new CompositeLogger();
-
-        /// <summary>
-        /// Creates a new instance of the connection component.
-        /// </summary>
-        public MySqlConnection()
-        { }
+        private CompositeLogger _logger = new CompositeLogger();
 
         /// <summary>
         /// Gets MySql connection object.
@@ -116,20 +127,23 @@ namespace PipServices3.MySql.Persistence
         /// Configures component by passing configuration parameters.
         /// </summary>
         /// <param name="config">configuration parameters to be set.</param>
-        public virtual void Configure(ConfigParams config)
+        public void Configure(ConfigParams config)
         {
-            config = config.SetDefaults(_defaultConfig);
+	        _config = config.SetDefaults(_defaultConfig);
+	        _options = _options.Override(_config.GetSection("options"));
+            _sshConfigs = _sshConfigs.Override(_config.GetSection("ssh"));
 
-            _connectionResolver.Configure(config);
+            _databaseServer = _config.GetAsNullableString("connection.host");
+            _sshEnabled = _sshConfigs.GetAsBooleanWithDefault("enabled", false);
 
-            _options = _options.Override(config.GetSection("options"));
+            _connectionResolver.Configure(_config);
         }
 
         /// <summary>
         /// Checks if the component is opened.
         /// </summary>
         /// <returns>true if the component has been opened and false otherwise.</returns>
-        public virtual bool IsOpen()
+        public bool IsOpen()
         {
             return _connection != null;
         }
@@ -138,42 +152,84 @@ namespace PipServices3.MySql.Persistence
         /// Opens the component.
         /// </summary>
         /// <param name="correlationId">(optional) transaction id to trace execution through call chain.</param>
-        public async virtual Task OpenAsync(string correlationId)
+        public async Task OpenAsync(string correlationId)
         {
-            var uri = await _connectionResolver.ResolveAsync(correlationId);
-
-            _logger.Trace(correlationId, "Connecting to mysql...");
-
-            try
+	        if (_sshEnabled)
             {
-                uri = ComposeUriSettings(uri);
-
-                _connection = new MySqlData.MySqlClient.MySqlConnection();
-                _connection.ConnectionString = uri;
-                _databaseName = _connection.Database;
-
-                // Try to connect
-                await _connection.OpenAsync();
-
-                _logger.Debug(correlationId, "Connected to mysql database {0}", _databaseName);
+                await MySqlWithSshOpenAsync(correlationId);
             }
-            catch (Exception ex)
+            else
             {
-                throw new ConnectionException(correlationId, "CONNECT_FAILED", "Connection to mysql failed", ex);
+	            var uri = await _connectionResolver.ResolveAsync(correlationId);
+
+                _logger.Trace(correlationId, "Connecting to mysql...");
+
+                try
+                {
+                    uri = ComposeUriSettings(uri);
+
+                    _connection = new MySqlData.MySqlClient.MySqlConnection {ConnectionString = uri};
+                    _databaseName = _connection.Database;
+
+                    // Try to connect
+                    await _connection.OpenAsync();
+
+                    _logger.Debug(correlationId, "Connected to mysql database {0}", _databaseName);
+                }
+                catch (Exception ex)
+                {
+                    throw new ConnectionException(correlationId, "CONNECT_FAILED", "Connection to mysql failed", ex);
+                }
+            }
+        }
+        
+        private async Task MySqlWithSshOpenAsync(string correlationId)
+        {
+	        var sshHost = _sshConfigs.GetAsNullableString("host");
+	        var sshUsername = _sshConfigs.GetAsNullableString("username");
+	        var sshPassword = _sshConfigs.GetAsNullableString("password");
+	        var sshKeyFile = _sshConfigs.GetAsNullableString("key_file_path");
+	        
+	        var (sshClient, localPort) = ConnectSsh(sshHost, sshUsername, sshPassword, sshKeyFile, databaseServer: _databaseServer);
+            using (sshClient)
+            {
+	            _config.Set("connection.host", "127.0.0.1");
+	            _config.Set("connection.port", localPort.ToString());
+	            _connectionResolver.Configure(_config);
+
+	            var uri = await _connectionResolver.ResolveAsync(correlationId);
+	            
+                _logger.Trace(correlationId, "Connecting to mysql...");
+
+                try
+                {
+                    uri = ComposeUriSettings(uri);
+
+                    _connection = new MySqlData.MySqlClient.MySqlConnection {ConnectionString = uri};
+                    _databaseName = _connection.Database;
+
+                    // Try to connect
+                    await _connection.OpenAsync();
+
+                    _logger.Debug(correlationId, "Connected to mysql database {0}", _databaseName);
+                }
+                catch (Exception ex)
+                {
+                    throw new ConnectionException(correlationId, "CONNECT_FAILED", "Connection to mysql failed", ex);
+                }
             }
         }
 
         private string ComposeUriSettings(string uri)
         {
             var maxPoolSize = _options.GetAsNullableInteger("max_pool_size");
-            var connectTimeoutMS = _options.GetAsNullableInteger("connect_timeout");
-            var idleTimeoutMS = _options.GetAsNullableInteger("idle_timeout");
+            var connectTimeoutMs = _options.GetAsNullableInteger("connect_timeout");
+            var idleTimeoutMs = _options.GetAsNullableInteger("idle_timeout");
 
-            MySqlData.MySqlClient.MySqlConnectionStringBuilder builder = new MySqlData.MySqlClient.MySqlConnectionStringBuilder();
-            builder.ConnectionString = uri;
+            var builder = new MySqlData.MySqlClient.MySqlConnectionStringBuilder {ConnectionString = uri};
 
             if (maxPoolSize.HasValue) builder.MaximumPoolSize = Convert.ToUInt32(maxPoolSize.Value);
-            if (connectTimeoutMS.HasValue) builder.ConnectionTimeout = Convert.ToUInt32(connectTimeoutMS.Value);
+            if (connectTimeoutMs.HasValue) builder.ConnectionTimeout = Convert.ToUInt32(connectTimeoutMs.Value);
 
             return builder.ToString();
         }
@@ -182,15 +238,51 @@ namespace PipServices3.MySql.Persistence
         /// Closes component and frees used resources.
         /// </summary>
         /// <param name="correlationId">(optional) transaction id to trace execution through call chain.</param>
-        public async virtual Task CloseAsync(string correlationId)
+        public async Task CloseAsync(string correlationId)
         {
-            // Todo: Properly close the connection
-            _connection.Close();
+            await _connection.CloseAsync();
 
             _connection = null;
             _databaseName = null;
 
             await Task.Delay(0);
+        }
+
+        private static (SshClient SshClient, uint Port) ConnectSsh(string sshHostName, string sshUserName, string sshPassword = null,
+            string sshKeyFile = null, string sshPassPhrase = null, int sshPort = 22, string databaseServer = "localhost", int databasePort = 3306)
+        {
+            // check arguments
+            if (string.IsNullOrEmpty(sshHostName))
+                throw new ArgumentException($"{nameof(sshHostName)} must be specified.", nameof(sshHostName));
+            if (string.IsNullOrEmpty(sshUserName))
+                throw new ArgumentException($"{nameof(sshUserName)} must be specified.", nameof(sshUserName));
+            if (string.IsNullOrEmpty(sshPassword) && string.IsNullOrEmpty(sshKeyFile))
+                throw new ArgumentException($"One of {nameof(sshPassword)} and {nameof(sshKeyFile)} must be specified.");
+            if (string.IsNullOrEmpty(databaseServer))
+                throw new ArgumentException($"{nameof(databaseServer)} must be specified.", nameof(databaseServer));
+
+            // define the authentication methods to use (in order)
+            var authenticationMethods = new List<AuthenticationMethod>();
+            if (!string.IsNullOrEmpty(sshKeyFile))
+            {
+                authenticationMethods.Add(new PrivateKeyAuthenticationMethod(sshUserName,
+                    new PrivateKeyFile(sshKeyFile, string.IsNullOrEmpty(sshPassPhrase) ? null : sshPassPhrase)));
+            }
+            if (!string.IsNullOrEmpty(sshPassword))
+            {
+                authenticationMethods.Add(new PasswordAuthenticationMethod(sshUserName, sshPassword));
+            }
+
+            // connect to the SSH server
+            var sshClient = new SshClient(new ConnectionInfo(sshHostName, sshPort, sshUserName, authenticationMethods.ToArray()));
+            sshClient.Connect();
+
+            // forward a local port to the database server and port, using the SSH server
+            var forwardedPort = new ForwardedPortLocal("127.0.0.1", databaseServer, (uint) databasePort);
+            sshClient.AddForwardedPort(forwardedPort);
+            forwardedPort.Start();
+
+            return (sshClient, forwardedPort.BoundPort);
         }
     }
 }

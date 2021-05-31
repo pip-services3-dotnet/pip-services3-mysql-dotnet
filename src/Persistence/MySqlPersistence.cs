@@ -221,7 +221,7 @@ namespace PipServices3.MySql.Persistence
 
         protected void EnsureIndex(string name, Dictionary<string, bool> keys, IndexOptions options)
         {
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
             builder.Append("CREATE");
 
             if (options.Unique)
@@ -286,7 +286,7 @@ namespace PipServices3.MySql.Persistence
         protected virtual T ConvertToPublic(AnyValueMap map)
         {
             var json = JsonConverter.ToJson(map);
-            T obj = JsonConverter.FromJson<T>(json);
+            var obj = JsonConverter.FromJson<T>(json);
             return obj;
         }
 
@@ -300,7 +300,7 @@ namespace PipServices3.MySql.Persistence
 
         protected string QuoteIdentifier(string value)
         {
-            if (value == null || value == "") return value;
+            if (string.IsNullOrEmpty(value)) return value;
 
             if (value[0] == '`') return value;
 
@@ -320,7 +320,7 @@ namespace PipServices3.MySql.Persistence
         /// Opens the component.
         /// </summary>
         /// <param name="correlationId">(optional) transaction id to trace execution through call chain.</param>
-        public async virtual Task OpenAsync(string correlationId)
+        public virtual async Task OpenAsync(string correlationId)
         {
             if (IsOpen()) return;
 
@@ -450,7 +450,7 @@ namespace PipServices3.MySql.Persistence
         /// <returns>a generated list of value parameters</returns>
         protected string GenerateParameters<K>(IEnumerable<K> values)
         {
-            List<string> result = new List<string>();
+            var result = new List<string>();
 
             var index = 1;
             foreach (var value in values)
@@ -537,7 +537,7 @@ namespace PipServices3.MySql.Persistence
 
             var items = result.Select(map => ConvertToPublic(map)).ToList();
 
-            long? total = pagingEnabled ? (long?)await GetCountByFilterAsync(correlationId, filter) : null;
+            var total = pagingEnabled ? (long?)await GetCountByFilterAsync(correlationId, filter) : null;
 
             return new DataPage<T>
             {
@@ -703,7 +703,7 @@ namespace PipServices3.MySql.Persistence
         {
             if (values != null && values.Count() > 0)
             {
-                int index = 1;
+                var index = 1;
                 foreach (var value in values)
                 {
                     AddParameter(cmd, "Param" + index, value);
@@ -768,16 +768,16 @@ namespace PipServices3.MySql.Persistence
                     columnTypes[row["ColumnName"].ToString()] = dataTypeName;
                 }
 
-                DataTable table = new DataTable();
+                var table = new DataTable();
                 table.Load(reader);
 
-                List<AnyValueMap> result = new List<AnyValueMap>();
+                var result = new List<AnyValueMap>();
                 foreach (DataRow row in table.Rows)
                 {
-                    AnyValueMap map = new AnyValueMap();
+                    var map = new AnyValueMap();
                     foreach (DataColumn column in table.Columns)
                     {
-                        var columnType = columnTypes.TryGetValue(column.ColumnName, out string type) ? type : null;
+                        var columnType = columnTypes.TryGetValue(column.ColumnName, out var type) ? type : null;
 
                         var value = row[column];
                         if (value != DBNull.Value)

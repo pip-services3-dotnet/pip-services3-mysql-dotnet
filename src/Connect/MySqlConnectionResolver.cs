@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using PipServices3.Commons.Config;
 using PipServices3.Commons.Errors;
 using PipServices3.Commons.Refer;
-using PipServices3.Commons.Run;
 using PipServices3.Components.Auth;
 using PipServices3.Components.Connect;
 using MySqlData = MySql.Data;
@@ -146,6 +144,7 @@ namespace PipServices3.MySql.Connect
             }
 
             // Define additional parameters parameters
+
             var options = ConfigParams.MergeConfigs(connections.Select(c => c.ToDictionary(p => p.Key, p => p.Value)).ToArray()).Override(credential);
             options.Remove("uri");
             options.Remove("host");

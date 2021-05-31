@@ -1,8 +1,4 @@
-﻿using PipServices3.Commons.Convert;
-using PipServices3.Commons.Data;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
+﻿using PipServices3.Commons.Data;
 using System.Linq;
 using System.Threading.Tasks;
 

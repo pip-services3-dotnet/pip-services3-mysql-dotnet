@@ -1,8 +1,6 @@
 ﻿using PipServices3.Commons.Data;
 using PipServices3.MySql.Persistence;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
