@@ -67,7 +67,7 @@ namespace PipServices3.MySql.Connect
             _credentialResolver.Configure(config, false);
         }
 
-        private void ValidateConnection(string correlationId, ConnectionParams connection)
+        private static void ValidateConnection(string correlationId, ConnectionParams connection)
         {
             var uri = connection.Uri;
             if (uri != null) return;
@@ -85,7 +85,7 @@ namespace PipServices3.MySql.Connect
                 throw new ConfigException(correlationId, "NO_DATABASE", "Connection database is not set");
         }
 
-        private void ValidateConnections(string correlationId, List<ConnectionParams> connections)
+        private static void ValidateConnections(string correlationId, List<ConnectionParams> connections)
         {
             if (connections == null || connections.Count == 0)
                 throw new ConfigException(correlationId, "NO_CONNECTION", "Database connection is not set");
@@ -94,7 +94,7 @@ namespace PipServices3.MySql.Connect
                 ValidateConnection(correlationId, connection);
         }
 
-        private string ComposeUri1(List<ConnectionParams> connections, CredentialParams credential)
+        private static string ComposeUri1(List<ConnectionParams> connections, CredentialParams credential)
         {
             // If there is a uri then return it immediately
             string uri;
@@ -118,10 +118,9 @@ namespace PipServices3.MySql.Connect
             }
 
             // Define database
-            var database = "";
             foreach (var connection in connections)
             {
-                database = connection.GetAsNullableString("database");
+                var database = connection.GetAsNullableString("database");
                 if (!string.IsNullOrWhiteSpace(database))
                 {
                     builder.Database = database;

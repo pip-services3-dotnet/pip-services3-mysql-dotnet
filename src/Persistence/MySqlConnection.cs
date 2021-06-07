@@ -89,6 +89,10 @@ namespace PipServices3.MySql.Persistence
         /// The flag enabled ssh.
         /// </summary>
         private bool _sshEnabled;
+        
+        private SshClient _sshClient;
+
+        private string _sshPort;
 
         /// <summary>
         /// The logger.
@@ -191,32 +195,32 @@ namespace PipServices3.MySql.Persistence
 	        var sshKeyFile = _sshConfigs.GetAsNullableString("key_file_path");
 	        
 	        var (sshClient, localPort) = ConnectSsh(sshHost, sshUsername, sshPassword, sshKeyFile, databaseServer: _databaseServer);
-            using (sshClient)
+            _sshClient = sshClient;
+            _sshPort = localPort.ToString();
+            
+	        _config.Set("connection.host", "127.0.0.1");
+	        _config.Set("connection.port", _sshPort);
+	        _connectionResolver.Configure(_config);
+
+	        var uri = await _connectionResolver.ResolveAsync(correlationId);
+	        
+            _logger.Trace(correlationId, "Connecting to mysql...");
+
+            try
             {
-	            _config.Set("connection.host", "127.0.0.1");
-	            _config.Set("connection.port", localPort.ToString());
-	            _connectionResolver.Configure(_config);
+                uri = ComposeUriSettings(uri);
 
-	            var uri = await _connectionResolver.ResolveAsync(correlationId);
-	            
-                _logger.Trace(correlationId, "Connecting to mysql...");
+                _connection = new MySqlData.MySqlClient.MySqlConnection {ConnectionString = uri};
+                _databaseName = _connection.Database;
 
-                try
-                {
-                    uri = ComposeUriSettings(uri);
+                // Try to connect
+                await _connection.OpenAsync();
 
-                    _connection = new MySqlData.MySqlClient.MySqlConnection {ConnectionString = uri};
-                    _databaseName = _connection.Database;
-
-                    // Try to connect
-                    await _connection.OpenAsync();
-
-                    _logger.Debug(correlationId, "Connected to mysql database {0}", _databaseName);
-                }
-                catch (Exception ex)
-                {
-                    throw new ConnectionException(correlationId, "CONNECT_FAILED", "Connection to mysql failed", ex);
-                }
+                _logger.Debug(correlationId, "Connected to mysql database {0}", _databaseName);
+            }
+            catch (Exception ex)
+            {
+                throw new ConnectionException(correlationId, "CONNECT_FAILED", "Connection to mysql failed", ex);
             }
         }
 
@@ -240,6 +244,14 @@ namespace PipServices3.MySql.Persistence
         /// <param name="correlationId">(optional) transaction id to trace execution through call chain.</param>
         public async Task CloseAsync(string correlationId)
         {
+            if (_sshEnabled)
+            {
+                if (_sshClient.IsConnected)
+                {
+                    _sshClient.Disconnect();
+                }
+            }
+            
             await _connection.CloseAsync();
 
             _connection = null;
@@ -274,7 +286,7 @@ namespace PipServices3.MySql.Persistence
             }
 
             // connect to the SSH server
-            var sshClient = new SshClient(new ConnectionInfo(sshHostName, sshPort, sshUserName, authenticationMethods.ToArray()));
+            var sshClient = new SshClient(new ConnectionInfo(sshHostName, sshPort, sshUserName, authenticationMethods.ToArray()){Timeout = TimeSpan.FromSeconds(30)});
             sshClient.Connect();
 
             // forward a local port to the database server and port, using the SSH server
