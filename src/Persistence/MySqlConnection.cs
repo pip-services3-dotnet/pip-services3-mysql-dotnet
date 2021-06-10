@@ -193,8 +193,11 @@ namespace PipServices3.MySql.Persistence
 	        var sshUsername = _sshConfigs.GetAsNullableString("username");
 	        var sshPassword = _sshConfigs.GetAsNullableString("password");
 	        var sshKeyFile = _sshConfigs.GetAsNullableString("key_file_path");
-	        
-	        var (sshClient, localPort) = ConnectSsh(sshHost, sshUsername, sshPassword, sshKeyFile, databaseServer: _databaseServer);
+	        var sshKeepAliveInterval = _sshConfigs.GetAsNullableTimeSpan("keep_alive_interval");
+
+            var (sshClient, localPort) = ConnectSsh(sshHost, sshUsername, sshPassword, sshKeyFile, 
+                databaseServer: _databaseServer, sshKeepAliveInterval: sshKeepAliveInterval);
+            
             _sshClient = sshClient;
             _sshPort = localPort.ToString();
             
@@ -261,7 +264,8 @@ namespace PipServices3.MySql.Persistence
         }
 
         private static (SshClient SshClient, uint Port) ConnectSsh(string sshHostName, string sshUserName, string sshPassword = null,
-            string sshKeyFile = null, string sshPassPhrase = null, int sshPort = 22, string databaseServer = "localhost", int databasePort = 3306)
+            string sshKeyFile = null, string sshPassPhrase = null, int sshPort = 22, string databaseServer = "localhost", int databasePort = 3306,
+            TimeSpan? sshKeepAliveInterval = null)
         {
             // check arguments
             if (string.IsNullOrEmpty(sshHostName))
@@ -286,7 +290,14 @@ namespace PipServices3.MySql.Persistence
             }
 
             // connect to the SSH server
-            var sshClient = new SshClient(new ConnectionInfo(sshHostName, sshPort, sshUserName, authenticationMethods.ToArray()){Timeout = TimeSpan.FromSeconds(30)});
+            var sshClient = new SshClient(new ConnectionInfo(sshHostName, sshPort, sshUserName, authenticationMethods.ToArray())
+            {
+                Timeout = TimeSpan.FromSeconds(30),
+            });
+
+            if (sshKeepAliveInterval.HasValue)
+                sshClient.KeepAliveInterval = sshKeepAliveInterval.Value;
+
             sshClient.Connect();
 
             // forward a local port to the database server and port, using the SSH server
