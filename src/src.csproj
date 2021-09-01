@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0</TargetFrameworks>
     <AssemblyName>PipServices3.MySql</AssemblyName>
     <RootNamespace>PipServices3.MySql</RootNamespace>
     <ApplicationIcon />
     <Win32Resource />
-    <Version>3.2.0</Version>
+    <Version>3.3.0</Version>
     <Authors>Sergey Seroukhov, Denis Kuznetsov, Sergey Khoroshikh</Authors>
     <Copyright>Conceptual Vision Consulting LLC. 2017-2021</Copyright>
     <Description>MySql components for Pip.Services in .NET</Description>
@@ -30,9 +30,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.25" />
-    <PackageReference Include="PipServices3.Commons" Version="3.1.2" />
-    <PackageReference Include="PipServices3.Components" Version="3.2.1" />
-    <PackageReference Include="PipServices3.Data" Version="3.2.3" />
+    <PackageReference Include="PipServices3.Commons" Version="3.3.0" />
+    <PackageReference Include="PipServices3.Components" Version="3.3.0" />
+    <PackageReference Include="PipServices3.Data" Version="3.4.0" />
     <PackageReference Include="SSH.NET" Version="2020.0.1" />
   </ItemGroup>
 </Project>
