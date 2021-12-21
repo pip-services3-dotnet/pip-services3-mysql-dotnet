@@ -589,7 +589,7 @@ namespace PipServices3.MySql.Persistence
             if (!string.IsNullOrWhiteSpace(filter))
                 query += " WHERE " + filter;
 
-            if (!string.IsNullOrWhiteSpace(filter))
+            if (!string.IsNullOrWhiteSpace(sort))
                 query += " ORDER BY " + sort;
 
             var result = await ExecuteReaderAsync(query);
