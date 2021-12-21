@@ -6,7 +6,7 @@
     <RootNamespace>PipServices3.MySql</RootNamespace>
     <ApplicationIcon />
     <Win32Resource />
-    <Version>3.3.0</Version>
+    <Version>3.3.1</Version>
     <Authors>Sergey Seroukhov, Denis Kuznetsov, Sergey Khoroshikh</Authors>
     <Copyright>Conceptual Vision Consulting LLC. 2017-2021</Copyright>
     <Description>MySql components for Pip.Services in .NET</Description>

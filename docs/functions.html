@@ -79,6 +79,9 @@ $(function() {
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a9c5b4a4bc41c6e84fcd058eb3a0c7891">PipServices3.MySql.Persistence.MySqlConnection</a>
 , <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a372d4de3513614eaf6b9f95429bd43b9">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
+<li>_databaseServer
+: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#aa8f3f93589b0a7749f479cb47b400218">PipServices3.MySql.Persistence.MySqlConnection</a>
+</li>
 <li>_dependencyResolver
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a6d9ede3b6aae06a7a49c452e3fe85ae0">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
@@ -92,6 +95,12 @@ $(function() {
 <li>_options
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#af28d6fe9e1f4cb44f6649f9eefb2693d">PipServices3.MySql.Persistence.MySqlConnection</a>
 </li>
+<li>_sshConfigs
+: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a59b50878b355afce6f6629bb423d18ea">PipServices3.MySql.Persistence.MySqlConnection</a>
+</li>
+<li>_sshEnabled
+: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a2fca08c6b133c0e9cba60de54c0ea333">PipServices3.MySql.Persistence.MySqlConnection</a>
+</li>
 <li>_tableName
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#abcb2e2da40f6d3bf08890f9e22e2e96b">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
@@ -100,7 +109,7 @@ $(function() {
 
 <h3><a id="index_a"></a>- a -</h3><ul>
 <li>AutoCreateObject()
-: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a9190d5bcb1e27b58129e9db206f784ec">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
+: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#ac2620776b318fe57eb4b96a92802b9cb">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
 </ul>
 
@@ -109,13 +118,16 @@ $(function() {
 <li>ClearAsync()
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#acbb62d76c63dec22383b39ebd825a7bd">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
+<li>ClearSchema()
+: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a8ff292baa72894ed578d6a6aa41f4374">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
+</li>
 <li>CloseAsync()
-: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#ad13437591176e60ba39537de846775d7">PipServices3.MySql.Persistence.MySqlConnection</a>
+: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a14550b0ee20df97e6d34744d8ba0d8be">PipServices3.MySql.Persistence.MySqlConnection</a>
 , <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#ae218077c4cdbb0d9bcf1f338beac1a8e">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
 <li>Configure()
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_connect_1_1_my_sql_connection_resolver.html#ae708063196619bea0d88c291f8a4c02c">PipServices3.MySql.Connect.MySqlConnectionResolver</a>
-, <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a479dd0581d1fb925dd740028d59d9582">PipServices3.MySql.Persistence.MySqlConnection</a>
+, <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a20c48127ca39a233a95b3d5b48187d37">PipServices3.MySql.Persistence.MySqlConnection</a>
 , <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a69c8ffae55b43bbf9c2b3515c0987c2e">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
 <li>ConvertFromPublic()
@@ -136,6 +148,9 @@ $(function() {
 <li>DefaultMySqlFactory()
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_build_1_1_default_my_sql_factory.html#ac6bf23cf6717894d6b6178a94a9d16e0">PipServices3.MySql.Build.DefaultMySqlFactory</a>
 </li>
+<li>DefineSchema()
+: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a67a56c432eb7ca791600cfef41c5eb11">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
+</li>
 <li>DeleteByFilterAsync()
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a3813ed795e081098c47e1e38fbed4c4e">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
@@ -149,6 +164,9 @@ $(function() {
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
+<li>EnsureSchema()
+: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#ace01fcd586bc74ee905c2de6bba74ae1">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
+</li>
 <li>EnsureTable()
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_identifiable_json_my_sql_persistence.html#a624b7cd81223d2f89294fd4b6ebfdb39">PipServices3.MySql.Persistence.IdentifiableJsonMySqlPersistence&lt; T, K &gt;</a>
 </li>
@@ -203,16 +221,13 @@ $(function() {
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_identifiable_my_sql_persistence.html#afb44a09535fc55f5d3ca0257ee3a1de9">PipServices3.MySql.Persistence.IdentifiableMySqlPersistence&lt; T, K &gt;</a>
 </li>
 <li>IsOpen()
-: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a4b58eb2f0efb231336b61b315c4c0e7c">PipServices3.MySql.Persistence.MySqlConnection</a>
+: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a896f01b7331f20041d4ef55f1f6a7a99">PipServices3.MySql.Persistence.MySqlConnection</a>
 , <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#aee029882ed2908df201658a527b6db3b">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
 </ul>
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
-<li>MySqlConnection()
-: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#ad70095aa45c8d11631568f1b5ef9ec71">PipServices3.MySql.Persistence.MySqlConnection</a>
-</li>
 <li>MySqlPersistence()
 : <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#ae5ec4f0639d1e18e45a0456751511321">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
@@ -221,7 +236,7 @@ $(function() {
 
 <h3><a id="index_o"></a>- o -</h3><ul>
 <li>OpenAsync()
-: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a96c6856fd5e7bb09254f4bc89557b103">PipServices3.MySql.Persistence.MySqlConnection</a>
+: <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#aec2119d5499ac0e41fcf2e1d19dbe94c">PipServices3.MySql.Persistence.MySqlConnection</a>
 , <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#ac02c5fff7ce0332f1135a084b9354e72">PipServices3.MySql.Persistence.MySqlPersistence&lt; T &gt;</a>
 </li>
 </ul>

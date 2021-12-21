@@ -64,9 +64,10 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">PipServices3.MySql.Persistence.MySqlConnection Class Reference</div>  </div>
@@ -86,9 +87,6 @@ Inheritance diagram for PipServices3.MySql.Persistence.MySqlConnection:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad70095aa45c8d11631568f1b5ef9ec71"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#ad70095aa45c8d11631568f1b5ef9ec71">MySqlConnection</a> ()</td></tr>
-<tr class="memdesc:ad70095aa45c8d11631568f1b5ef9ec71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new instance of the connection component.  <a href="#ad70095aa45c8d11631568f1b5ef9ec71">More...</a><br /></td></tr>
-<tr class="separator:ad70095aa45c8d11631568f1b5ef9ec71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab06ea30635afbd197966ce62be98255c"><td class="memItemLeft" align="right" valign="top">MySqlData.MySqlClient.MySqlConnection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#ab06ea30635afbd197966ce62be98255c">GetConnection</a> ()</td></tr>
 <tr class="memdesc:ab06ea30635afbd197966ce62be98255c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets <a class="el" href="namespace_pip_services3_1_1_my_sql.html">MySql</a> connection object.  <a href="#ab06ea30635afbd197966ce62be98255c">More...</a><br /></td></tr>
 <tr class="separator:ab06ea30635afbd197966ce62be98255c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -98,47 +96,77 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af01bb6b9cf6554e787c952474e8a122d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#af01bb6b9cf6554e787c952474e8a122d">SetReferences</a> (IReferences references)</td></tr>
 <tr class="memdesc:af01bb6b9cf6554e787c952474e8a122d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets references to dependent components.  <a href="#af01bb6b9cf6554e787c952474e8a122d">More...</a><br /></td></tr>
 <tr class="separator:af01bb6b9cf6554e787c952474e8a122d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a479dd0581d1fb925dd740028d59d9582"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a479dd0581d1fb925dd740028d59d9582">Configure</a> (ConfigParams config)</td></tr>
-<tr class="memdesc:a479dd0581d1fb925dd740028d59d9582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures component by passing configuration parameters.  <a href="#a479dd0581d1fb925dd740028d59d9582">More...</a><br /></td></tr>
-<tr class="separator:a479dd0581d1fb925dd740028d59d9582"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b58eb2f0efb231336b61b315c4c0e7c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a4b58eb2f0efb231336b61b315c4c0e7c">IsOpen</a> ()</td></tr>
-<tr class="memdesc:a4b58eb2f0efb231336b61b315c4c0e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the component is opened.  <a href="#a4b58eb2f0efb231336b61b315c4c0e7c">More...</a><br /></td></tr>
-<tr class="separator:a4b58eb2f0efb231336b61b315c4c0e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96c6856fd5e7bb09254f4bc89557b103"><td class="memItemLeft" align="right" valign="top">virtual async Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a96c6856fd5e7bb09254f4bc89557b103">OpenAsync</a> (string correlationId)</td></tr>
-<tr class="memdesc:a96c6856fd5e7bb09254f4bc89557b103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the component.  <a href="#a96c6856fd5e7bb09254f4bc89557b103">More...</a><br /></td></tr>
-<tr class="separator:a96c6856fd5e7bb09254f4bc89557b103"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad13437591176e60ba39537de846775d7"><td class="memItemLeft" align="right" valign="top">virtual async Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#ad13437591176e60ba39537de846775d7">CloseAsync</a> (string correlationId)</td></tr>
-<tr class="memdesc:ad13437591176e60ba39537de846775d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes component and frees used resources.  <a href="#ad13437591176e60ba39537de846775d7">More...</a><br /></td></tr>
-<tr class="separator:ad13437591176e60ba39537de846775d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20c48127ca39a233a95b3d5b48187d37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a20c48127ca39a233a95b3d5b48187d37">Configure</a> (ConfigParams config)</td></tr>
+<tr class="memdesc:a20c48127ca39a233a95b3d5b48187d37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures component by passing configuration parameters.  <a href="#a20c48127ca39a233a95b3d5b48187d37">More...</a><br /></td></tr>
+<tr class="separator:a20c48127ca39a233a95b3d5b48187d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a896f01b7331f20041d4ef55f1f6a7a99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a896f01b7331f20041d4ef55f1f6a7a99">IsOpen</a> ()</td></tr>
+<tr class="memdesc:a896f01b7331f20041d4ef55f1f6a7a99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the component is opened.  <a href="#a896f01b7331f20041d4ef55f1f6a7a99">More...</a><br /></td></tr>
+<tr class="separator:a896f01b7331f20041d4ef55f1f6a7a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec2119d5499ac0e41fcf2e1d19dbe94c"><td class="memItemLeft" align="right" valign="top">async Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#aec2119d5499ac0e41fcf2e1d19dbe94c">OpenAsync</a> (string correlationId)</td></tr>
+<tr class="memdesc:aec2119d5499ac0e41fcf2e1d19dbe94c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the component.  <a href="#aec2119d5499ac0e41fcf2e1d19dbe94c">More...</a><br /></td></tr>
+<tr class="separator:aec2119d5499ac0e41fcf2e1d19dbe94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14550b0ee20df97e6d34744d8ba0d8be"><td class="memItemLeft" align="right" valign="top">async Task&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a14550b0ee20df97e6d34744d8ba0d8be">CloseAsync</a> (string correlationId)</td></tr>
+<tr class="memdesc:a14550b0ee20df97e6d34744d8ba0d8be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes component and frees used resources.  <a href="#a14550b0ee20df97e6d34744d8ba0d8be">More...</a><br /></td></tr>
+<tr class="separator:a14550b0ee20df97e6d34744d8ba0d8be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a3c1a96de1e9ba4469e0fd2933fe24f63"><td class="memItemLeft" align="right" valign="top"><a id="a3c1a96de1e9ba4469e0fd2933fe24f63"></a>
+async Task&#160;</td><td class="memItemRight" valign="bottom"><b>MySqlWithSshOpenAsync</b> (string correlationId)</td></tr>
+<tr class="separator:a3c1a96de1e9ba4469e0fd2933fe24f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83deedd4a5a19bd133bef8fdec5c4e65"><td class="memItemLeft" align="right" valign="top"><a id="a83deedd4a5a19bd133bef8fdec5c4e65"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>ComposeUriSettings</b> (string uri)</td></tr>
+<tr class="separator:a83deedd4a5a19bd133bef8fdec5c4e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+Static Private Member Functions</h2></td></tr>
+<tr class="memitem:a4cbbace0f9a36f403f1eaed6989f6d4b"><td class="memItemLeft" align="right" valign="top"><a id="a4cbbace0f9a36f403f1eaed6989f6d4b"></a>
+static SshClient uint Port&#160;</td><td class="memItemRight" valign="bottom"><b>ConnectSsh</b> (string sshHostName, string sshUserName, string sshPassword=null, string sshKeyFile=null, string sshPassPhrase=null, int sshPort=22, string databaseServer=&quot;localhost&quot;, int databasePort=3306, TimeSpan? sshKeepAliveInterval=null)</td></tr>
+<tr class="separator:a4cbbace0f9a36f403f1eaed6989f6d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aa8c85f937a673eb622e608043e0d2304"><td class="memItemLeft" align="right" valign="top"><a id="aa8c85f937a673eb622e608043e0d2304"></a>
+ConfigParams&#160;</td><td class="memItemRight" valign="bottom"><b>_config</b></td></tr>
+<tr class="separator:aa8c85f937a673eb622e608043e0d2304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a035243e2a1e01ac30336a145c544107a"><td class="memItemLeft" align="right" valign="top">ConfigParams&#160;</td><td class="memItemRight" valign="bottom"><b>_defaultConfig</b></td></tr>
+<tr class="separator:a035243e2a1e01ac30336a145c544107a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd4c85276d78e1caa6716bebd66b9810"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_connect_1_1_my_sql_connection_resolver.html">MySqlConnectionResolver</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#acd4c85276d78e1caa6716bebd66b9810">_connectionResolver</a> = new <a class="el" href="class_pip_services3_1_1_my_sql_1_1_connect_1_1_my_sql_connection_resolver.html">MySqlConnectionResolver</a>()</td></tr>
 <tr class="memdesc:acd4c85276d78e1caa6716bebd66b9810"><td class="mdescLeft">&#160;</td><td class="mdescRight">The connection resolver.  <a href="#acd4c85276d78e1caa6716bebd66b9810">More...</a><br /></td></tr>
 <tr class="separator:acd4c85276d78e1caa6716bebd66b9810"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af28d6fe9e1f4cb44f6649f9eefb2693d"><td class="memItemLeft" align="right" valign="top">ConfigParams&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#af28d6fe9e1f4cb44f6649f9eefb2693d">_options</a> = new ConfigParams()</td></tr>
 <tr class="memdesc:af28d6fe9e1f4cb44f6649f9eefb2693d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The configuration options.  <a href="#af28d6fe9e1f4cb44f6649f9eefb2693d">More...</a><br /></td></tr>
 <tr class="separator:af28d6fe9e1f4cb44f6649f9eefb2693d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b50878b355afce6f6629bb423d18ea"><td class="memItemLeft" align="right" valign="top">ConfigParams&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a59b50878b355afce6f6629bb423d18ea">_sshConfigs</a> = new ConfigParams()</td></tr>
+<tr class="memdesc:a59b50878b355afce6f6629bb423d18ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">The SSH configuration object.  <a href="#a59b50878b355afce6f6629bb423d18ea">More...</a><br /></td></tr>
+<tr class="separator:a59b50878b355afce6f6629bb423d18ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcf73606b192c78d4e85bded52a92f79"><td class="memItemLeft" align="right" valign="top">MySqlData.MySqlClient.MySqlConnection&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#afcf73606b192c78d4e85bded52a92f79">_connection</a></td></tr>
 <tr class="memdesc:afcf73606b192c78d4e85bded52a92f79"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="namespace_pip_services3_1_1_my_sql.html">MySql</a> connection object.  <a href="#afcf73606b192c78d4e85bded52a92f79">More...</a><br /></td></tr>
 <tr class="separator:afcf73606b192c78d4e85bded52a92f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c5b4a4bc41c6e84fcd058eb3a0c7891"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a9c5b4a4bc41c6e84fcd058eb3a0c7891">_databaseName</a></td></tr>
 <tr class="memdesc:a9c5b4a4bc41c6e84fcd058eb3a0c7891"><td class="mdescLeft">&#160;</td><td class="mdescRight">The database name.  <a href="#a9c5b4a4bc41c6e84fcd058eb3a0c7891">More...</a><br /></td></tr>
 <tr class="separator:a9c5b4a4bc41c6e84fcd058eb3a0c7891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8f3f93589b0a7749f479cb47b400218"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#aa8f3f93589b0a7749f479cb47b400218">_databaseServer</a></td></tr>
+<tr class="memdesc:aa8f3f93589b0a7749f479cb47b400218"><td class="mdescLeft">&#160;</td><td class="mdescRight">The database name.  <a href="#aa8f3f93589b0a7749f479cb47b400218">More...</a><br /></td></tr>
+<tr class="separator:aa8f3f93589b0a7749f479cb47b400218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fca08c6b133c0e9cba60de54c0ea333"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#a2fca08c6b133c0e9cba60de54c0ea333">_sshEnabled</a></td></tr>
+<tr class="memdesc:a2fca08c6b133c0e9cba60de54c0ea333"><td class="mdescLeft">&#160;</td><td class="mdescRight">The flag enabled ssh.  <a href="#a2fca08c6b133c0e9cba60de54c0ea333">More...</a><br /></td></tr>
+<tr class="separator:a2fca08c6b133c0e9cba60de54c0ea333"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6154f905350a331331982c4e0b28a0c2"><td class="memItemLeft" align="right" valign="top"><a id="a6154f905350a331331982c4e0b28a0c2"></a>
+SshClient&#160;</td><td class="memItemRight" valign="bottom"><b>_sshClient</b></td></tr>
+<tr class="separator:a6154f905350a331331982c4e0b28a0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7b8be54cdaf955fad9cd5bc645716d0"><td class="memItemLeft" align="right" valign="top"><a id="ae7b8be54cdaf955fad9cd5bc645716d0"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>_sshPort</b></td></tr>
+<tr class="separator:ae7b8be54cdaf955fad9cd5bc645716d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3d5707dc5a2e4bb0ead999b9de2cf8e"><td class="memItemLeft" align="right" valign="top">CompositeLogger&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_connection.html#ae3d5707dc5a2e4bb0ead999b9de2cf8e">_logger</a> = new CompositeLogger()</td></tr>
 <tr class="memdesc:ae3d5707dc5a2e4bb0ead999b9de2cf8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger.  <a href="#ae3d5707dc5a2e4bb0ead999b9de2cf8e">More...</a><br /></td></tr>
 <tr class="separator:ae3d5707dc5a2e4bb0ead999b9de2cf8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a83deedd4a5a19bd133bef8fdec5c4e65"><td class="memItemLeft" align="right" valign="top"><a id="a83deedd4a5a19bd133bef8fdec5c4e65"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>ComposeUriSettings</b> (string uri)</td></tr>
-<tr class="separator:a83deedd4a5a19bd133bef8fdec5c4e65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a035243e2a1e01ac30336a145c544107a"><td class="memItemLeft" align="right" valign="top">ConfigParams&#160;</td><td class="memItemRight" valign="bottom"><b>_defaultConfig</b></td></tr>
-<tr class="separator:a035243e2a1e01ac30336a145c544107a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a056d4696e991b996265dcab026baab3b"><td class="memItemLeft" align="right" valign="top"><a id="a056d4696e991b996265dcab026baab3b"></a>
+static SshClient&#160;</td><td class="memItemRight" valign="bottom"><b>SshClient</b></td></tr>
+<tr class="separator:a056d4696e991b996265dcab026baab3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="namespace_pip_services3_1_1_my_sql.html">MySql</a> connection using plain driver. </p>
@@ -167,49 +195,21 @@ Private Attributes</h2></td></tr>
 <li>*:discovery:*:*:1.0 (optional) <a href="https://pip-services3-dotnet.github.io/pip-services3-components-dotnet/interface_pip_services_1_1_components_1_1_connect_1_1_i_discovery.html">IDiscovery</a> services</li>
 <li>*:credential-store:*:*:1.0 (optional) Credential stores to resolve credentials </li>
 </ul>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad70095aa45c8d11631568f1b5ef9ec71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad70095aa45c8d11631568f1b5ef9ec71">&#9670;&nbsp;</a></span>MySqlConnection()</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a14550b0ee20df97e6d34744d8ba0d8be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14550b0ee20df97e6d34744d8ba0d8be">&#9670;&nbsp;</a></span>CloseAsync()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PipServices3.MySql.Persistence.MySqlConnection.MySqlConnection </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates a new instance of the connection component. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="ad13437591176e60ba39537de846775d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad13437591176e60ba39537de846775d7">&#9670;&nbsp;</a></span>CloseAsync()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual async Task PipServices3.MySql.Persistence.MySqlConnection.CloseAsync </td>
+          <td class="memname">async Task PipServices3.MySql.Persistence.MySqlConnection.CloseAsync </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>correlationId</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Closes component and frees used resources. </p>
@@ -222,28 +222,20 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a479dd0581d1fb925dd740028d59d9582"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a479dd0581d1fb925dd740028d59d9582">&#9670;&nbsp;</a></span>Configure()</h2>
+<a id="a20c48127ca39a233a95b3d5b48187d37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20c48127ca39a233a95b3d5b48187d37">&#9670;&nbsp;</a></span>Configure()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void PipServices3.MySql.Persistence.MySqlConnection.Configure </td>
+          <td class="memname">void PipServices3.MySql.Persistence.MySqlConnection.Configure </td>
           <td>(</td>
           <td class="paramtype">ConfigParams&#160;</td>
           <td class="paramname"><em>config</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Configures component by passing configuration parameters. </p>
@@ -296,27 +288,19 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a4b58eb2f0efb231336b61b315c4c0e7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b58eb2f0efb231336b61b315c4c0e7c">&#9670;&nbsp;</a></span>IsOpen()</h2>
+<a id="a896f01b7331f20041d4ef55f1f6a7a99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a896f01b7331f20041d4ef55f1f6a7a99">&#9670;&nbsp;</a></span>IsOpen()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool PipServices3.MySql.Persistence.MySqlConnection.IsOpen </td>
+          <td class="memname">bool PipServices3.MySql.Persistence.MySqlConnection.IsOpen </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Checks if the component is opened. </p>
@@ -324,28 +308,20 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a96c6856fd5e7bb09254f4bc89557b103"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a96c6856fd5e7bb09254f4bc89557b103">&#9670;&nbsp;</a></span>OpenAsync()</h2>
+<a id="aec2119d5499ac0e41fcf2e1d19dbe94c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec2119d5499ac0e41fcf2e1d19dbe94c">&#9670;&nbsp;</a></span>OpenAsync()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual async Task PipServices3.MySql.Persistence.MySqlConnection.OpenAsync </td>
+          <td class="memname">async Task PipServices3.MySql.Persistence.MySqlConnection.OpenAsync </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>correlationId</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Opens the component. </p>
@@ -400,7 +376,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -424,7 +400,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -448,7 +424,31 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The database name. </p>
+
+</div>
+</div>
+<a id="aa8f3f93589b0a7749f479cb47b400218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8f3f93589b0a7749f479cb47b400218">&#9670;&nbsp;</a></span>_databaseServer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string PipServices3.MySql.Persistence.MySqlConnection._databaseServer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -494,7 +494,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -518,12 +518,60 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>The configuration options. </p>
+
+</div>
+</div>
+<a id="a59b50878b355afce6f6629bb423d18ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b50878b355afce6f6629bb423d18ea">&#9670;&nbsp;</a></span>_sshConfigs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConfigParams PipServices3.MySql.Persistence.MySqlConnection._sshConfigs = new ConfigParams()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The SSH configuration object. </p>
+
+</div>
+</div>
+<a id="a2fca08c6b133c0e9cba60de54c0ea333"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fca08c6b133c0e9cba60de54c0ea333">&#9670;&nbsp;</a></span>_sshEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PipServices3.MySql.Persistence.MySqlConnection._sshEnabled</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The flag enabled ssh. </p>
 
 </div>
 </div>

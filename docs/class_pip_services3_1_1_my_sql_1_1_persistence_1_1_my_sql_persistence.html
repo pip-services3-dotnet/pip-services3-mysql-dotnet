@@ -130,9 +130,18 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a674afc31533ea23ee9b41c2d3bee3a3e"><td class="memItemLeft" align="right" valign="top"><a id="a674afc31533ea23ee9b41c2d3bee3a3e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>EnsureIndex</b> (string name, Dictionary&lt; string, bool &gt; keys, <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_index_options.html">IndexOptions</a> options)</td></tr>
 <tr class="separator:a674afc31533ea23ee9b41c2d3bee3a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9190d5bcb1e27b58129e9db206f784ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a9190d5bcb1e27b58129e9db206f784ec">AutoCreateObject</a> (string dmlStatement)</td></tr>
-<tr class="memdesc:a9190d5bcb1e27b58129e9db206f784ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds index definition to create it on opening  <a href="#a9190d5bcb1e27b58129e9db206f784ec">More...</a><br /></td></tr>
-<tr class="separator:a9190d5bcb1e27b58129e9db206f784ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2620776b318fe57eb4b96a92802b9cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#ac2620776b318fe57eb4b96a92802b9cb">AutoCreateObject</a> (string schemaStatement)</td></tr>
+<tr class="memdesc:ac2620776b318fe57eb4b96a92802b9cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a statement to schema definition.  <a href="#ac2620776b318fe57eb4b96a92802b9cb">More...</a><br /></td></tr>
+<tr class="separator:ac2620776b318fe57eb4b96a92802b9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace01fcd586bc74ee905c2de6bba74ae1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#ace01fcd586bc74ee905c2de6bba74ae1">EnsureSchema</a> (string schemaStatement)</td></tr>
+<tr class="memdesc:ace01fcd586bc74ee905c2de6bba74ae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a statement to schema definition  <a href="#ace01fcd586bc74ee905c2de6bba74ae1">More...</a><br /></td></tr>
+<tr class="separator:ace01fcd586bc74ee905c2de6bba74ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ff292baa72894ed578d6a6aa41f4374"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a8ff292baa72894ed578d6a6aa41f4374">ClearSchema</a> ()</td></tr>
+<tr class="memdesc:a8ff292baa72894ed578d6a6aa41f4374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all auto-created objects  <a href="#a8ff292baa72894ed578d6a6aa41f4374">More...</a><br /></td></tr>
+<tr class="separator:a8ff292baa72894ed578d6a6aa41f4374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a56c432eb7ca791600cfef41c5eb11"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a67a56c432eb7ca791600cfef41c5eb11">DefineSchema</a> ()</td></tr>
+<tr class="memdesc:a67a56c432eb7ca791600cfef41c5eb11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines database schema via auto create objects or convenience methods.  <a href="#a67a56c432eb7ca791600cfef41c5eb11">More...</a><br /></td></tr>
+<tr class="separator:a67a56c432eb7ca791600cfef41c5eb11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9613243534f495157238a2a3aa66663d"><td class="memItemLeft" align="right" valign="top">virtual T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a9613243534f495157238a2a3aa66663d">ConvertToPublic</a> (AnyValueMap map)</td></tr>
 <tr class="memdesc:a9613243534f495157238a2a3aa66663d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts object value from internal to public format.  <a href="#a9613243534f495157238a2a3aa66663d">More...</a><br /></td></tr>
 <tr class="separator:a9613243534f495157238a2a3aa66663d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,9 +151,9 @@ virtual AnyValueMap&#160;</td><td class="memItemRight" valign="bottom"><b>Conver
 <tr class="memitem:ae5c3bb1b6083c328c45bee4ccaaaff61"><td class="memItemLeft" align="right" valign="top"><a id="ae5c3bb1b6083c328c45bee4ccaaaff61"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>QuoteIdentifier</b> (string value)</td></tr>
 <tr class="separator:ae5c3bb1b6083c328c45bee4ccaaaff61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea9388a8fc390280c09a2f79c6d3da43"><td class="memItemLeft" align="right" valign="top"><a id="aea9388a8fc390280c09a2f79c6d3da43"></a>
-async Task&#160;</td><td class="memItemRight" valign="bottom"><b>AutoCreateObjectsAsync</b> (string correlationId)</td></tr>
-<tr class="separator:aea9388a8fc390280c09a2f79c6d3da43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad73694e0cade5fc655b131f62d9b486e"><td class="memItemLeft" align="right" valign="top"><a id="ad73694e0cade5fc655b131f62d9b486e"></a>
+async Task&#160;</td><td class="memItemRight" valign="bottom"><b>CreateSchemaAsync</b> (string correlationId)</td></tr>
+<tr class="separator:ad73694e0cade5fc655b131f62d9b486e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ef2c1386583fc4ec786ed16f1dd4cb2"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html#a8ef2c1386583fc4ec786ed16f1dd4cb2">GenerateColumns</a> (AnyValueMap map)</td></tr>
 <tr class="memdesc:a8ef2c1386583fc4ec786ed16f1dd4cb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates a list of column names to use in SQL statements like: "column1,column2,column3"  <a href="#a8ef2c1386583fc4ec786ed16f1dd4cb2">More...</a><br /></td></tr>
 <tr class="separator:a8ef2c1386583fc4ec786ed16f1dd4cb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,9 +247,9 @@ async Task&lt; R &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Exec
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a6b3b50ff61052aeb5f237f3afc3db9aa"><td class="memItemLeft" align="right" valign="top"><a id="a6b3b50ff61052aeb5f237f3afc3db9aa"></a>
-readonly List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_autoObjects</b> = new List&lt;string&gt;()</td></tr>
-<tr class="separator:a6b3b50ff61052aeb5f237f3afc3db9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3420fdddc17b31dd0a45542cd216e7c0"><td class="memItemLeft" align="right" valign="top"><a id="a3420fdddc17b31dd0a45542cd216e7c0"></a>
+readonly List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_schemaStatements</b> = new List&lt;string&gt;()</td></tr>
+<tr class="separator:a3420fdddc17b31dd0a45542cd216e7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a740254384ea768f8fa1f032c38f83b26"><td class="memItemLeft" align="right" valign="top"><a id="a740254384ea768f8fa1f032c38f83b26"></a>
 ConfigParams&#160;</td><td class="memItemRight" valign="bottom"><b>_config</b></td></tr>
 <tr class="separator:a740254384ea768f8fa1f032c38f83b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -330,8 +339,8 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9190d5bcb1e27b58129e9db206f784ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9190d5bcb1e27b58129e9db206f784ec">&#9670;&nbsp;</a></span>AutoCreateObject()</h2>
+<a id="ac2620776b318fe57eb4b96a92802b9cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2620776b318fe57eb4b96a92802b9cb">&#9670;&nbsp;</a></span>AutoCreateObject()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -343,7 +352,7 @@ Static Private Attributes</h2></td></tr>
           <td class="memname">void <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html">PipServices3.MySql.Persistence.MySqlPersistence</a>&lt; T &gt;.AutoCreateObject </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>dmlStatement</em></td><td>)</td>
+          <td class="paramname"><em>schemaStatement</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -354,10 +363,10 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Adds index definition to create it on opening </p>
+<p>Adds a statement to schema definition. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dmlStatement</td><td>DML statement to autocreate database object</td></tr>
+    <tr><td class="paramname">dmlStatement</td><td>a statement to be added to the schema</td></tr>
   </table>
   </dd>
 </dl>
@@ -395,6 +404,33 @@ Static Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a8ff292baa72894ed578d6a6aa41f4374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ff292baa72894ed578d6a6aa41f4374">&#9670;&nbsp;</a></span>ClearSchema()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html">PipServices3.MySql.Persistence.MySqlPersistence</a>&lt; T &gt;.ClearSchema </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clears all auto-created objects </p>
 
 </div>
 </div>
@@ -551,6 +587,33 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a67a56c432eb7ca791600cfef41c5eb11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67a56c432eb7ca791600cfef41c5eb11">&#9670;&nbsp;</a></span>DefineSchema()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html">PipServices3.MySql.Persistence.MySqlPersistence</a>&lt; T &gt;.DefineSchema </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Defines database schema via auto create objects or convenience methods. </p>
+
+</div>
+</div>
 <a id="a3813ed795e081098c47e1e38fbed4c4e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3813ed795e081098c47e1e38fbed4c4e">&#9670;&nbsp;</a></span>DeleteByFilterAsync()</h2>
 
@@ -591,6 +654,40 @@ Static Private Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">correlationId</td><td>(optional) transaction id to trace execution through call chain.</td></tr>
     <tr><td class="paramname">filterDefinition</td><td>(optional) a filter JSON object.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ace01fcd586bc74ee905c2de6bba74ae1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace01fcd586bc74ee905c2de6bba74ae1">&#9670;&nbsp;</a></span>EnsureSchema()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_pip_services3_1_1_my_sql_1_1_persistence_1_1_my_sql_persistence.html">PipServices3.MySql.Persistence.MySqlPersistence</a>&lt; T &gt;.EnsureSchema </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>schemaStatement</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a statement to schema definition </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">schemaStatement</td><td>a statement to be added to the schema</td></tr>
   </table>
   </dd>
 </dl>

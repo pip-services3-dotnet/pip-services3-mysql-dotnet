@@ -530,9 +530,9 @@ namespace PipServices3.MySql.Persistence
             if (!string.IsNullOrWhiteSpace(sort))
                 query += " ORDER BY " + sort;
 
-            if (skip >= 0) query += " OFFSET " + skip;
             query += " LIMIT " + take;
-
+            if (skip >= 0) query += " OFFSET " + skip;
+            
             var result = await ExecuteReaderAsync(query);
 
             var items = result.Select(map => ConvertToPublic(map)).ToList();
@@ -627,7 +627,7 @@ namespace PipServices3.MySql.Persistence
             if (!string.IsNullOrWhiteSpace(filter))
                 query += " WHERE " + filter;
 
-            query += string.Format(" OFFSET {0} LIMIT 1", pos);
+            query += string.Format(" LIMIT 1 OFFSET {0}", pos);
 
             var items = await ExecuteReaderAsync(query);
 
