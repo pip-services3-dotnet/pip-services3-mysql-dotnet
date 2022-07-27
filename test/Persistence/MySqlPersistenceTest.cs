@@ -29,7 +29,7 @@ namespace PipServices3.MySql.Persistence
 			mysqlPort = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? "3306";
 			mysqlDatabase = Environment.GetEnvironmentVariable("MYSQL_DB") ?? "test";
 			mysqlUsername = Environment.GetEnvironmentVariable("MYSQL_USER") ?? "user";
-			mysqlPassword = Environment.GetEnvironmentVariable("MYSQL_PASSWORD") ?? "mysql";
+			mysqlPassword = Environment.GetEnvironmentVariable("MYSQL_PASSWORD") ?? "password";
 
 			if (mysqlUri == null && mysqlHost == null)
 				return;

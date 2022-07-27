@@ -29,10 +29,10 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="8.0.25" />
-    <PackageReference Include="PipServices3.Commons" Version="3.3.0" />
-    <PackageReference Include="PipServices3.Components" Version="3.3.0" />
-    <PackageReference Include="PipServices3.Data" Version="3.4.0" />
-    <PackageReference Include="SSH.NET" Version="2020.0.1" />
+    <PackageReference Include="MySql.Data" Version="8.0.30" />
+    <PackageReference Include="PipServices3.Commons" Version="3.3.1" />
+    <PackageReference Include="PipServices3.Components" Version="3.4.2" />
+    <PackageReference Include="PipServices3.Data" Version="3.4.1" />
+    <PackageReference Include="SSH.NET" Version="2020.0.2" />
   </ItemGroup>
 </Project>

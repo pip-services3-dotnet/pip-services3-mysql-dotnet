@@ -1,6 +1,6 @@
 ﻿using PipServices3.Commons.Refer;
 using PipServices3.Components.Build;
-using PipServices3.MySql.Persistence;
+using PipServices3.MySql.Connect;
 
 namespace PipServices3.MySql.Build
 {

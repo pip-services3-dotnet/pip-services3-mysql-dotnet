@@ -11,6 +11,7 @@ using System.Data;
 using System.Text;
 using System.Linq;
 using PipServices3.Commons.Convert;
+using PipServices3.MySql.Connect;
 using MySqlData = MySql.Data;
 
 namespace PipServices3.MySql.Persistence

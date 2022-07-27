@@ -1,8 +1,9 @@
 ﻿using PipServices3.Commons.Config;
+using PipServices3.MySql.Persistence;
 using System;
 using Xunit;
 
-namespace PipServices3.MySql.Persistence
+namespace PipServices3.MySql.Connect
 {
 	/// <summary>
 	/// Unit tests for the <c>MySqlConnectionTest</c> class
@@ -10,7 +11,7 @@ namespace PipServices3.MySql.Persistence
 	[Collection("Sequential")]
 	public class MySqlConnectionTest : IDisposable
 	{
-		private MySqlConnection Db { get; }
+		private MySqlConnection connection { get; }
 
 		private string mysqlUri;
 		private string mysqlHost;
@@ -21,29 +22,20 @@ namespace PipServices3.MySql.Persistence
 
 		public MySqlConnectionTest()
 		{
-			Db = new MySqlConnection();
+			connection = new MySqlConnection();
 
 			mysqlUri = Environment.GetEnvironmentVariable("MYSQL_URI");
 			mysqlHost = Environment.GetEnvironmentVariable("MYSQL_HOST") ?? "localhost";
 			mysqlPort = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? "3306";
 			mysqlDatabase = Environment.GetEnvironmentVariable("MYSQL_DB") ?? "test";
 			mysqlUsername = Environment.GetEnvironmentVariable("MYSQL_USER") ?? "user";
-			mysqlPassword = Environment.GetEnvironmentVariable("MYSQL_PASSWORD") ?? "mysql";
+			mysqlPassword = Environment.GetEnvironmentVariable("MYSQL_PASSWORD") ?? "password";
 			if (mysqlUri == null && mysqlHost == null)
 				return;
 
-			if (Db == null) return;
-		}
+			if (connection == null) return;
 
-		public void Dispose()
-		{
-			Db.CloseAsync(null).Wait();
-		}
-
-		[Fact]
-		public void TestOpenAsync_Success()
-		{
-			Db.Configure(ConfigParams.FromTuples(
+			connection.Configure(ConfigParams.FromTuples(
 				"connection.uri", mysqlUri,
 				"connection.host", mysqlHost,
 				"connection.port", mysqlPort,
@@ -52,27 +44,21 @@ namespace PipServices3.MySql.Persistence
 				"credential.password", mysqlPassword
 			));
 
-			Db.OpenAsync(null).Wait();
+			connection.OpenAsync(null).Wait();
 
-			var actual = Db.IsOpen();
-
-			Assert.True(actual);
+			Assert.True(connection.IsOpen());
 		}
 
-		//[Fact]
-		//public void TestOpenAsync_Failure()
-		//{
-		//    Db.CloseAsync(null).Wait();
+		public void Dispose()
+		{
+			connection.CloseAsync(null).Wait();
+		}
 
-		//    Db.Configure(ConfigParams.FromTuples(
-		//        "connection.uri", mysqlUri,
-		//        "connection.host", mysqlHost,
-		//        "connection.port", "1234",
-		//        "connection.database", mysqlDatabase
-		//    ));
-
-		//    var ex = Assert.Throws<AggregateException>(() => Db.OpenAsync(null).Wait());
-		//    Assert.Equal("Connection to mysql failed", ex.InnerException.Message);
-		//}
+		[Fact]
+		public void TestOpenAsync_Success()
+		{
+			Assert.True(connection.GetConnection() != null);
+			Assert.True(connection.GetDatabaseName() != "");
+		}
 	}
 }

@@ -10,7 +10,7 @@ using PipServices3.MySql.Connect;
 using Renci.SshNet;
 using MySqlData = MySql.Data;
 
-namespace PipServices3.MySql.Persistence
+namespace PipServices3.MySql.Connect
 {
     /// <summary>
     /// MySql connection using plain driver.
