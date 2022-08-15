@@ -1,6 +1,14 @@
 {
-    "name": "pip-services3-mysql",
-    "registry": "pipdevs",
+    "name": "pip-services3-mysql-dotnet",
+    "type": "module",
+    "language": "dotnet",
     "version": "3.4.0",
-    "build": "0"
+    "build": 0,
+    "registry": "pipdevs",
+    "artifacts": [
+        {
+            "name":  "<name>",
+            "type": "nuget"
+        }
+    ]
 }
